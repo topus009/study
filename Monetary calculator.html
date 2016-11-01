@@ -1,0 +1,12 @@
+<script>
+	var s = +prompt('Vvedite kurs US = ', 0);
+	var e = +prompt('Vvedite kurs EU = ', 0);
+	var rub = +prompt('Skolko u vas RUB = ', 0);
+	var x = rub / s;
+	var y = rub / e;
+	x = x.toFixed(2);
+	y = y.toFixed(2);
+	alert('Vasha summa ravna\n' + x + 'us');
+	alert('Vasha summa ravna\n' + y + 'eu');
+
+</script>
