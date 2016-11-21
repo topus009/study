@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿# Условие задачи
+=======
+# Условие задачи
+>>>>>>> 0e5563e2c531d16353a6d2e5bf0b75c9f99bcc89
 ---
 +  При открытии страницы пользователь видит кнопку "Open menu".
 +  Когда пользовать нажимает кнопку "Open menu", появляется панель с кнопками "Add item" и "Close menu".
@@ -10,4 +14,8 @@
 
 ---
 
+<<<<<<< HEAD
 ![](https://github.com/topus009/study/blob/master/JQuery/test_4.png)
+=======
+![](https://github.com/topus009/study/blob/master/JQuery/test_4.png)
+>>>>>>> 0e5563e2c531d16353a6d2e5bf0b75c9f99bcc89
