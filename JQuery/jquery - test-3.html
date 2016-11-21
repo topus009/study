@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+
+	body {
+  margin: 0;
+}
+.main {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  margin-top: 17px;
+}
+.menu {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: calc(50% - 5px);
+  background-color: lightgrey;
+  height: 1000px;
+}
+.hidden {
+  display: none;
+}
+.main-for {
+  height: 60px;
+}
+.open-close-left {
+  position:absolute;
+  top:0px;
+  right:50%;
+}
+.open-close {
+  position:absolute;
+  top:0px;
+  right:0px;
+}
+	
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+	</script>
+	<script>
+		$(document).ready(function() {
+		
+$('.menu  > button').on('click', function() {
+      var wrap = $(this).parent().find('.wrapper');
+      var num = wrap.children().length + 1;
+      var el = $('<div class="control"></div>')
+        .append($('<span class="name"></span>').text('Item #' + num))
+        .append($('<br />'))
+        .append($('<input />').on('keypress', input))
+        .append($('<br />'))
+        .append($('<button>Remove</button>').on('click', function() {
+          var _this = $(this);
+          if (_this.text() == 'Remove') {
+            var num = _this
+            	.text('Restore')
+              .parent()
+            	.find('input')
+              .prop("disabled", true)
+            	.val('')
+            	.parent()
+            	.data('number');
+          	var el = $('.main > div.for' + num);
+          	_this.data('restore', el.text());
+          	el.text('');
+          } else {
+            var restore = _this.data('restore');
+            var num = _this
+            .text('Remove')
+            .parent()
+            .find('input')
+            .prop("disabled", false)
+            .val(restore)
+            .parent()
+            .data('number');
+            $('.main > div.for' + num).text(restore);
+            _this.data('restore', '');
+          }
+        })).data('number', num);
+      wrap.append(el);
+      $('.main').append($('<div class="for' + num + '"></div>'));
+    });
+    function input(e) {
+      var _this = $(this);
+      setTimeout(function() {
+        var num = _this.parent().data('number');
+        var el = $('.main > div.for' + num);
+        el.text(_this.val());
+        el.addClass('main-for');
+      }, 0)
+    }
+    $('.open-close').on('click', function() {
+      $('.menu').toggleClass('hidden');
+      $('.main-for').toggleClass('hidden');
+      var _this = $(this);
+      if (_this.text() == 'Open menu') _this.text('Close menu')
+      else _this.text('Open menu');
+    })
+    $('.open-close').one().click();
+  	$('.open-close').on('click', function() {
+      var _this = $(this);
+      if (_this.text() == 'Open menu') _this.removeClass('open-close-left').addClass('open-close')
+      else _this.removeClass('open-close').addClass('open-close-left')
+})
+		
+		});
+	</script>
+</head>
+
+<body>
+<button class="open-close">Close menu</button>
+<div class="main">
+</div>
+<div class="menu">
+  <div class="wrapper">
+  </div>
+  <button>Add item</button>
+</div>
+
+
+</body>
+
+</html>
