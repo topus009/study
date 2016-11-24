@@ -12,6 +12,7 @@
 	
 	<script>
 		
+		
 		// Р О М Б ----------------------
 var canvas = document.getElementById("painting");  
 var romb = canvas.getContext("2d");
@@ -23,7 +24,6 @@ romb.moveTo(20, 0);
 romb.lineTo(40, 20);
 romb.lineTo(20, 40);
 romb.lineTo(0, 20);
-romb.closePath();
 
 romb.fill();
 
@@ -63,53 +63,21 @@ zig.closePath();
 // С П И Р А Л Ь ------------------
 var spiral = canvas.getContext("2d");
 
-
 spiral.moveTo(150,150);
 spiral.beginPath();
+
 spiral.strokeStyle = "rgba(0, 0, 0, 1.0)";
 spiral.arc(150, 150, 50, Math.PI/2, Math.PI, false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(140,140);
-spiral.beginPath();
 spiral.arc(140, 150 , 40, Math.PI, -0 , false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(130,130);
-spiral.beginPath();
 spiral.arc(145, 150 , 35, -0, Math.PI , false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(130,130);
-spiral.beginPath();
 spiral.arc(140, 150 , 30, Math.PI, -0 , false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(130,130);
-spiral.beginPath();
 spiral.arc(145, 150 , 25, -0, Math.PI , false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(130,130);
-spiral.beginPath();
 spiral.arc(140, 150 , 20, Math.PI, -0 , false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(130,130);
-spiral.beginPath();
 spiral.arc(145, 150 , 15, -0, Math.PI , false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(130,130);
-spiral.beginPath();
 spiral.arc(140, 150 , 10, Math.PI, -0 , false);
-spiral.stroke();
-spiral.closePath();
-spiral.moveTo(130,130);
-spiral.beginPath();
 spiral.arc(145, 150 , 5, -0, Math.PI+0.5 , false);
 spiral.stroke();
-spiral.closePath();
+
 
 // С О Л Н Е Ж И Н К А ------------------
 
@@ -117,14 +85,14 @@ var star = canvas.getContext("2d");
 
 star.fillStyle = "rgba(255, 193, 0, 1)";
 
-spiral.beginPath();
+star.beginPath();
 star.moveTo(440,280);
-
+	
 star.quadraticCurveTo(320,280 ,320 ,400 );
 star.quadraticCurveTo(320,280 ,200 ,280 );
 star.quadraticCurveTo(320,280 ,320 ,160 );
 star.quadraticCurveTo(320,280 ,440 ,280 );
-spiral.closePath();
+star.closePath();
 star.fill();
 
 
@@ -132,6 +100,20 @@ star.fill();
 //    Но прочитал внимательно условия. Там хотели функции с Math.cos Math.sin для координат. 
 //    Потом как-нибудь сделаю.
 
+var centerX = 440,
+centerY = 180,
+size = 50,
+n = 50,
+s = Math.PI * 2 / n;
+spiral.beginPath();
+star.moveTo(centerX - Math.sin(0) * size, centerY - Math.cos(0) * size);
+
+for(var i = 1; i <= n; i++) star.quadraticCurveTo(centerX, centerY, centerX - Math.sin(s * i) * size, centerY - Math.cos(s * i) * size);
+spiral.closePath();
+star.fill();
+
+		
+		
 		
 		</script>
 	
